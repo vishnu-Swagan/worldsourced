@@ -1,0 +1,42 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+model Order {
+  id              String   @id @default(cuid())
+  orderCode       String   @unique
+  status          String   @default("SUBMITTED")
+  category        String
+  title           String
+  description     String
+  sourceRegion    String?
+  destinationCountry String
+  budgetUsd       Float?
+  deadline        String?
+  urgency         String   @default("standard")
+  companyName     String?
+  contactName     String
+  contactEmail    String
+  contactPhone    String?
+  estimatedFeePct Float?
+  estimatedFeeMin Float?
+  estimatedFeeMax Float?
+  adminNotes      String?
+  createdAt       DateTime @default(now())
+  updatedAt       DateTime @updatedAt
+  statusHistory   StatusEvent[]
+}
+
+model StatusEvent {
+  id        String   @id @default(cuid())
+  orderId   String
+  status    String
+  note      String?
+  createdAt DateTime @default(now())
+  order     Order    @relation(fields: [orderId], references: [id], onDelete: Cascade)
+}
