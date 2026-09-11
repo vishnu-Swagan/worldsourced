@@ -1,0 +1,33 @@
+
+# See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
+# debug
+# dependencies
+# local env files
+# misc
+# next.js
+# production
+# secrets / local db (image bakes sqlite at Docker build)
+# testing
+# typescript
+# vercel
+*.pem
+*.tsbuildinfo
+.DS_Store
+.env
+.env*.local
+.gh-push-token
+.pnp.js
+.vercel
+.yarn/install-state.gz
+/.next/
+/.pnp
+/build
+/coverage
+/node_modules
+/out/
+next-env.d.ts
+npm-debug.log*
+prisma/*.db
+prisma/*.db-journal
+yarn-debug.log*
+yarn-error.log*

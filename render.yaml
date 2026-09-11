@@ -1,0 +1,11 @@
+services:
+  - type: web
+    name: worldsourced
+    runtime: docker
+    plan: free
+    healthCheckPath: /
+    envVars:
+      - key: ADMIN_PASSWORD
+        value: worldsourced-admin
+      - key: DATABASE_URL
+        value: file:./prisma/dev.db
